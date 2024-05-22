@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yosi H.S Alsafadi - GIS & RS スペシャリスト</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        header p {
+            font-size: 1em;
+        }
+        nav {
+            background: #34495e;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            transition: background 0.3s;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background: #1abc9c;
+            color: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .profile img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+        }
+        .profile h2 {
+            margin: 10px 0 0;
+            font-size: 1.5em;
+        }
+        .profile p {
+            margin: 5px 0 0;
+            font-size: 1em;
+        }
+        .personal-details {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .personal-details p {
+            font-size: 1em;
+            margin: 5px 0;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8em;
+            color: #2c3e50;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .details-grid div {
+            background: #f4f4f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .details-grid h3 {
+            font-size: 1.2em;
+            text-align: left;
+        }
+        .details-grid p, .details-grid ul {
+            font-size: 1em;
+            text-align: left;
+            list-style-type: none;
+            padding: 0;
+        }
+        .details-grid ul li {
+            margin-bottom: 10px;
+        }
+        .languages, .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .languages div, .hobbies div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            margin: 10px;
+            background: #f4f4f9;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .hobbies div p {
+            margin: 0;
+        }
+        .hobbies div p i {
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .shape {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(52, 152, 219, 0.3);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+        .shape1 {
+            top: -50px;
+            left: -50px;
+        }
+        .shape2 {
+            top: 150px;
+            left: 70%;
+        }
+        .shape3 {
+            top: 70%;
+            left: 50%;
+        }
+        .shape4 {
+            top: 85%;
+            left: 10%;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #2c3e50;
+            color: #fff;
+            margin-top: 40px;
+        }
+        footer a
+{
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #1abc9c;
+        }
+        @media (max-width: 768px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+            nav {
+                flex-direction: column;
+                padding: 0;
+            }
+            nav a {
+                margin: 5px 0;
+                padding: 10px;
+                text-align: center;
+            }
+        }
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background: #34495e;
+                display: flex;
+                flex-direction: column;
+                transform: translateY(-100%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+            }
+            nav a {
+                margin: 10px 0;
+                padding: 15px;
+                text-align: center;
+            }
+            nav.active {
+                transform: translateY(0);
+            }
+            .menu-toggle {
+                display: block;
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                background: #34495e;
+                color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+                z-index: 1000;
+            }
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position the tooltip above the text */
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .floating-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1abc9c;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .floating-button:hover {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Yosi H.S Alsafadi</h1>
+        <p>GIS & RS スペシャリスト | データアナリスト | デジタル通貨エンスージアスト</p>
+    </header>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+        <a href="#about">概要</a>
+        <a href="#education">学歴</a>
+        <a href="#experience">職歴</a>
+        <a href="#skills">スキル</a>
+        <a href="#additional-notes">追加ポイント</a>
+        <a href="#languages">言語</a>
+        <a href="#hobbies">趣味</a>
+        <a href="#contact">連絡先</a>
+    </nav>
+    <div class="container">
+        <section id="about" class="section">
+            <div class="profile">
+                <img src="DSC_1501 1.4in x 2in.jpg" alt="Yosi H.S Alsafadi">
+                <div>
+                    <h2>概要</h2>
+                    <p>私は、データ分析、デジタル通貨取引、および学術研究の豊富な経験を持つ専念的なGISおよびリモートセンシングのスペシャリストです。新しい技術を学び続け、プロフェッショナルスキルを継続的に開発することに強い情熱を持っています。</p>
+                </div>
+            </div>
+            <div class="personal-details">
+                <p><strong>生年月日:</strong> 1998年2月21日</p>
+                <p><strong>社会的地位:</strong> 独身</p>
+                <p><strong>居住情報:</strong> パレスチナ出身、現在マレーシアに居住、家族はベルギーに居住。</p>
+            </div>
+        </section>
+        <section id="education" class="section">
+            <h2>学歴</h2>
+            <div class="details-grid">
+                <div>
+                    <h3>コンピュータサイエンスおよび人工知能を含むGISおよびRSの博士課程</h3>
+                    <p>USIM (2022年3月 – 現在)</p>
+                </div>
+                <div>
+                    <h3>GISおよびRSの修士</h3>
+                    <p>IUG (2019年9月 – 2021年9月)</p>
+                </div>
+                <div>
+                    <h3>GISおよびRSの学士</h3>
+                    <p>IUG (2015年9月 – 2019年3月)</p>
+                </div>
+                <div>
+                    <h3>追加の学習</h3>
+                    <p>トレーニングコース中にデジタル通貨を副専攻として学ぶ</p>
+                </div>
+            </div>
+        </section>
+        <section id="experience" class="section">
+            <h2>職歴</h2>
+            <div class="details-grid">
+                <div>
+                    <h3>ティーチングアシスタント</h3>
+                    <p>GISおよびRS学部、IUG (2019年3月 – 2020年3月)</p>
+                </div>
+                <div>
+                    <h3>講師</h3>
+                    <p>GISおよびRS学部、IUG (2020年4月 – 2022年5月)</p>
+                </div>
+                <div>
+                    <h3>GISおよびRSアナリスト</h3>
+                    <p>地方自治省 (2019年1月 – 2022年5月)</p>
+                </div>
+                <div>
+                    <h3>ドローンおよび衛星画像のアナリストおよびプロセッサー</h3>
+                    <p>Sky Pixel社 (2018年1月 – 2022年5月)</p>
+                </div>
+                <div>
+                    <h3>データアナリストおよび管理者</h3>
+                    <p>民間セクター (2022年3月 – 現在)</p>
+                </div>
+                <div>
+                    <h3>デジタル通貨トレーダーおよびマネージャー</h3>
+                    <p>独立 (2022年3月 – 現在)</p>
+                </div>
+            </div>
+        </section>
+        <section id="skills" class="section">
+            <h2>スキル</h2>
+            <div class="details-grid">
+                <div>
+                    <h3>技術スキル</h3>
+                    <ul>
+                        <li>GISおよびRSプログラムの使用</li>
+                        <li>デジタル通貨および取引</li>
+                        <li>GISおよびRSのプログラミング</li>
+                        <li>Microsoft Office Suite (Excel, Word, PowerPoint)</li>
+                        <li>基本的なデザインプログラム</li>
+                        <li>空中画像ソフトウェアの利用</li>
+                        <li>地理データベースの管理</li>
+                        <li>データの収集および分析</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>個人のスキル</h3>
+                    <ul>
+                        <li>分析および意思決定能力</li>
+                        <li>独立して、またはチームの一員として働く能力</li>
+                        <li>レポートおよび科学研究の執筆</li>
+                        <li>新しいことを迅速かつ効率的に学ぶ強い意欲</li>
+                        <li>継続的な個人および専門的な発展へのコミットメント</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="additional-notes" class="section">
+            <h2>追加ポイント</h2>
+            <div class="details-grid">
+                <div>
+                    <p>新しいことを学ぶことに熱心で、迅速に学ぶ</p>
+                    <p>学習と成長の機会を提供するあらゆる分野で働く意欲がある</p>
+                    <p>日本語を学ぶことに興味がある</p>
+                    <p>デジタル通貨の取引における実践的な経験</p>
+                    <p>給与よりも新しい環境での経験と学習を優先し、日本の生活水準に応じた給与を希望</p>
+                    <p>新たな分野に対しても、繊細かつ高度に適応可能であり、グラフィックデザイン、デジタルマーケティング、データ管理、プロジェクト管理などの主な専門分野以外のさまざまな仕事の要件に必要な新しいスキルを迅速に習得できる</p>
+                    <p>強力な分析スキル、細部への注意、個人およびチーム内で働く能力がある</p>
+                    <p>自身の分野および関連分野の進歩の最前線に立ち続けるために、継続的および専門的な発展にコミットしている</p>
+                </div>
+            </div>
+        </section>
+        <section id="languages" class="section">
+            <h2>言語</h2>
+            <div class="languages">
+                <div>
+                    <p><i class="fas fa-star"></i> アラビア語</p>
+                    <p><i class="fas fa-star"></i> 英語</p>
+                    <p><i class="fas fa-star"></i> ヘブライ語</p>
+                </div>
+            </div>
+        </section>
+        <section id="hobbies" class="section">
+            <h2>趣味</h2>
+            <div class="hobbies">
+                <div><p><i class="fas fa-desktop"></i> コンピュータ</p></div>
+                <div><p><i class="fas fa-book"></i> 読書</p></div>
+                <div><p><i class="fas fa-pencil-alt"></i> 執筆</p></div>
+                <div><p><i class="fas fa-lightbulb"></i> 知識の普及</p></div>
+                <div><p><i class="fas fa-chart-line"></i> 通貨取引</p></div>
+                <div><p><i class="fas fa-tasks"></i> 旅行</p></div>
+                <div><p><i class="fas fa-swimmer"></i> 水泳</p></div>
+                <div><p><i class="fas fa-table-tennis"></i> 卓球</p></div>
+                <div><p><i class="fas fa-horse"></i> 乗馬</p></div>
+                <div><p><i class="fas fa-futbol"></i> サッカー</p></div>
+            </div>
+        </section>
+        <section id="contact" class="section">
+            <h2>連絡先</h2>
+            <p>私にご連絡いただく際は、以下の方法をご利用ください。</p>
+            <p>Email: <a href="mailto:yosih1998@gmail.com">yosih1998@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/60173573380" target="_blank">+60173573380</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/yosi.h_?igshid=czJxeWl0NmpsZDZj&utm_source=qr" target="_blank">@yosi.h_</a></p>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Yosi H.S Alsafadi. All Rights Reserved.</p>
+        <div>
+            <a href="mailto:yosih1998@gmail.com"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/60173573380" target="_blank"><i class="fas fa-phone"></i></a>
+            <a href="https://www.instagram.com/yosi.h_?igshid=czJxeWl0NmpsZDZj&utm_source=qr" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+    <div class="shapes">
+        <div class="shape shape1"></div>
+        <div class="shape shape2"></div>
+        <div class="shape shape3"></div>
+        <div class="shape shape4"></div>
+    </div>
+    <button class="floating-button" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script>
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        function toggleMenu() {
+            document.querySelector('nav').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
