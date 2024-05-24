@@ -7,18 +7,66 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <style>
+        :root {
+            --bg-color: #f0f0f5;
+            --text-color: #333;
+            --header-bg: #2c3e50;
+            --header-text: #fff;
+            --nav-bg: #34495e;
+            --nav-text: #fff;
+            --nav-hover-bg: #1abc9c;
+            --nav-hover-text: #fff;
+            --container-bg: #fff;
+            --section-title-color: #2c3e50;
+            --details-bg: #f4f4f9;
+            --footer-bg: #2c3e50;
+            --footer-text: #fff;
+            --footer-link: #fff;
+            --footer-link-hover: #1abc9c;
+            --link-color: #3498db;
+            --link-hover-color: #2980b9;
+        }
+
+        [data-theme="night"] {
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --header-bg: #1f1f1f;
+            --header-text: #e0e0e0;
+            --nav-bg: #2c2c2c;
+            --nav-text: #e0e0e0;
+            --nav-hover-bg: #3c3c3c;
+            --nav-hover-text: #e0e0e0;
+            --container-bg: #1f1f1f;
+            --section-title-color: #e0e0e0;
+            --details-bg: #2c2c2c;
+            --footer-bg: #1f1f1f;
+            --footer-text: #e0e0e0;
+            --footer-link: #e0e0e0;
+            --footer-link-hover: #3c3c3c;
+            --link-color: #76c7ff;
+            --link-hover-color: #5baee1;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f5;
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: var(--link-hover-color);
+        }
         header {
-            background: #2c3e50;
-            color: #fff;
+            background: var(--header-bg);
+            color: var(--header-text);
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -31,7 +79,7 @@
             font-size: 1em;
         }
         nav {
-            background: #34495e;
+            background: var(--nav-bg);
             padding: 10px 0;
             position: sticky;
             top: 0;
@@ -42,7 +90,7 @@
             transition: background 0.3s;
         }
         nav a {
-            color: #fff;
+            color: var(--nav-text);
             text-decoration: none;
             margin: 0 10px;
             padding: 8px 15px;
@@ -50,14 +98,14 @@
             transition: background 0.3s, color 0.3s;
         }
         nav a:hover {
-            background: #1abc9c;
-            color: #fff;
+            background: var(--nav-hover-bg);
+            color: var(--nav-hover-text);
         }
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
-            background: #fff;
+            background: var(--container-bg);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
         }
@@ -95,7 +143,7 @@
             margin-bottom: 20px;
             text-align: center;
             font-size: 1.8em;
-            color: #2c3e50;
+            color: var(--section-title-color);
         }
         .details-grid {
             display: grid;
@@ -103,7 +151,7 @@
             gap: 20px;
         }
         .details-grid div {
-            background: #f4f4f9;
+            background: var(--details-bg);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -132,7 +180,7 @@
             justify-content: center;
             font-size: 1.2em;
             margin: 10px;
-            background: #f4f4f9;
+            background: var(--details-bg);
             padding: 10px 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -189,19 +237,19 @@
         footer {
             text-align: center;
             padding: 20px 0;
-            background: #2c3e50;
-            color: #fff;
+            background: var(--footer-bg);
+            color: var(--footer-text);
             margin-top: 40px;
         }
         footer a {
-            color: #fff;
+            color: var(--footer-link);
             margin: 0 10px;
             text-decoration: none;
             font-size: 1.2em;
             transition: color 0.3s;
         }
         footer a:hover {
-            color: #1abc9c;
+            color: var(--footer-link-hover);
         }
         #map {
             height: 400px;
@@ -234,7 +282,7 @@
                 top: 0;
                 left: 0;
                 right: 0;
-                background: #34495e;
+                background: var(--nav-bg);
                 display: flex;
                 flex-direction: column;
                 transform: translateY(-100%);
@@ -254,8 +302,8 @@
                 position: fixed;
                 top: 10px;
                 right: 10px;
-                background: #34495e;
-                color: #fff;
+                background: var(--nav-bg);
+                color: var(--nav-text);
                 padding: 10px;
                 border-radius: 5px;
                 cursor: pointer;
@@ -299,26 +347,61 @@
         }
         .floating-button {
             position: fixed;
-            bottom: 20px;
+            top: 20px;
             right: 20px;
             background-color: #1abc9c;
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            font-size: 24px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
         .floating-button:hover {
             background-color: #16a085;
+            transform: scale(1.1);
+        }
+        .menu-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+        .menu-container .theme-toggle {
+            background-color: #f39c12;
+            color: white;
+        }
+        .menu-container .scroll-button {
+            background-color: #1abc9c;
+            color: white;
+        }
+        .menu-container button {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .menu-container button:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body>
+<body data-theme="day">
     <header>
         <h1>Yosi H.S Alsafadi</h1>
         <p>GIS & RS スペシャリスト | データアナリスト | デジタル通貨エンスージアスト</p>
@@ -492,13 +575,17 @@
         <div class="shape shape3"></div>
         <div class="shape shape4"></div>
     </div>
-    <button class="floating-button" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    <div class="menu-container">
+        <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+        <button class="scroll-button" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
         function toggleMenu() {
             document.querySelector('nav').classList.toggle('active');
         }
@@ -537,6 +624,12 @@
         var marker = L.marker([3.1390, 101.6869]).addTo(map)
             .bindPopup('Yosi H.S Alsafadi is here!')
             .openPopup();
+
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', currentTheme === 'night' ? 'day' : 'night');
+        }
     </script>
 </body>
 </html>
