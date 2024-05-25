@@ -56,28 +56,35 @@
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
+
         a {
             color: var(--link-color);
             text-decoration: none;
             transition: color 0.3s;
         }
+
         a:hover {
             color: var(--link-hover-color);
         }
+
         header {
             background: var(--header-bg);
             color: var(--header-text);
             padding: 20px 0;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 1s ease-out;
         }
+
         header h1 {
             margin: 0;
             font-size: 2em;
         }
+
         header p {
             font-size: 1em;
         }
+
         nav {
             background: var(--nav-bg);
             padding: 10px 0;
@@ -89,6 +96,7 @@
             flex-wrap: wrap;
             transition: background 0.3s;
         }
+
         nav a {
             color: var(--nav-text);
             text-decoration: none;
@@ -97,10 +105,12 @@
             border-radius: 5px;
             transition: background 0.3s, color 0.3s;
         }
+
         nav a:hover {
             background: var(--nav-hover-bg);
             color: var(--nav-hover-text);
         }
+
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -108,73 +118,105 @@
             background: var(--container-bg);
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            animation: fadeIn 1s ease-in-out;
         }
+
         .profile {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
+
         .profile img {
             border-radius: 50%;
             width: 120px;
             height: 120px;
+            animation: bounceIn 1s ease-out;
         }
+
         .profile h2 {
             margin: 10px 0 0;
             font-size: 1.5em;
         }
+
         .profile p {
             margin: 5px 0 0;
             font-size: 1em;
         }
+
         .personal-details {
             text-align: center;
             margin-top: 20px;
         }
+
         .personal-details p {
             font-size: 1em;
             margin: 5px 0;
         }
+
         .section {
             margin: 40px 0;
         }
+
         .section h2 {
             margin-bottom: 20px;
             text-align: center;
             font-size: 1.8em;
             color: var(--section-title-color);
+            position: relative;
         }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: var(--section-title-color);
+            margin: 10px auto 0;
+            animation: slideInLeft 1s ease-out;
+        }
+
         .details-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+
         .details-grid div {
             background: var(--details-bg);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out;
         }
+
         .details-grid h3 {
             font-size: 1.2em;
             text-align: left;
         }
-        .details-grid p, .details-grid ul {
+
+        .details-grid p,
+        .details-grid ul {
             font-size: 1em;
             text-align: left;
             list-style-type: none;
             padding: 0;
         }
+
         .details-grid ul li {
             margin-bottom: 10px;
         }
-        .languages, .hobbies {
+
+        .languages,
+        .hobbies {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .languages div, .hobbies div {
+
+        .languages div,
+        .hobbies div {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -184,14 +226,18 @@
             padding: 10px 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: bounceIn 1s ease-out;
         }
+
         .hobbies div p {
             margin: 0;
         }
+
         .hobbies div p i {
             margin-right: 10px;
             font-size: 1.2em;
         }
+
         .shapes {
             position: absolute;
             top: 0;
@@ -201,6 +247,7 @@
             overflow: hidden;
             z-index: -1;
         }
+
         .shape {
             position: absolute;
             width: 150px;
@@ -209,22 +256,27 @@
             border-radius: 50%;
             animation: float 6s ease-in-out infinite;
         }
+
         .shape1 {
             top: -50px;
             left: -50px;
         }
+
         .shape2 {
             top: 150px;
             left: 70%;
         }
+
         .shape3 {
             top: 70%;
             left: 50%;
         }
+
         .shape4 {
             top: 85%;
             left: 10%;
         }
+
         @keyframes float {
             0%,
             100% {
@@ -234,6 +286,81 @@
                 transform: translateY(-20px);
             }
         }
+
+        @keyframes slideInDown {
+            0% {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0%,
+            20%,
+            40%,
+            60%,
+            80%,
+            100% {
+                animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
         footer {
             text-align: center;
             padding: 20px 0;
@@ -241,6 +368,7 @@
             color: var(--footer-text);
             margin-top: 40px;
         }
+
         footer a {
             color: var(--footer-link);
             margin: 0 10px;
@@ -248,35 +376,43 @@
             font-size: 1.2em;
             transition: color 0.3s;
         }
+
         footer a:hover {
             color: var(--footer-link-hover);
         }
+
         #map {
             height: 400px;
             width: 100%;
             margin-top: 20px;
         }
+
         @media (max-width: 768px) {
             .details-grid {
                 grid-template-columns: 1fr;
             }
+
             nav {
                 flex-direction: column;
                 padding: 0;
             }
+
             nav a {
                 margin: 5px 0;
                 padding: 10px;
                 text-align: center;
             }
         }
+
         @media (max-width: 480px) {
             header h1 {
                 font-size: 1.5em;
             }
+
             header p {
                 font-size: 0.9em;
             }
+
             nav {
                 position: fixed;
                 top: 0;
@@ -289,14 +425,17 @@
                 transition: transform 0.3s ease-in-out;
                 z-index: 999;
             }
+
             nav a {
                 margin: 10px 0;
                 padding: 15px;
                 text-align: center;
             }
+
             nav.active {
                 transform: translateY(0);
             }
+
             .menu-toggle {
                 display: block;
                 position: fixed;
@@ -310,11 +449,13 @@
                 z-index: 1000;
             }
         }
+
         .tooltip {
             position: relative;
             display: inline-block;
             cursor: pointer;
         }
+
         .tooltip .tooltiptext {
             visibility: hidden;
             width: 120px;
@@ -325,26 +466,29 @@
             padding: 5px 0;
             position: absolute;
             z-index: 1;
-            bottom: 125%; /* Position the tooltip above the text */
+            bottom: 125%;
             left: 50%;
             margin-left: -60px;
             opacity: 0;
             transition: opacity 0.3s;
         }
+
         .tooltip .tooltiptext::after {
             content: "";
             position: absolute;
-            top: 100%; /* At the bottom of the tooltip */
+            top: 100%;
             left: 50%;
             margin-left: -5px;
             border-width: 5px;
             border-style: solid;
             border-color: #555 transparent transparent transparent;
         }
+
         .tooltip:hover .tooltiptext {
             visibility: visible;
             opacity: 1;
         }
+
         .floating-button {
             position: fixed;
             bottom: 20px;
@@ -363,10 +507,12 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
         }
+
         .floating-button:hover {
             background-color: #16a085;
             transform: scale(1.1);
         }
+
         .theme-toggle {
             position: fixed;
             bottom: 75px;
@@ -385,6 +531,7 @@
             z-index: 1000;
             transition: background-color 0.3s, transform 0.3s;
         }
+
         .theme-toggle:hover {
             background-color: #e67e22;
             transform: scale(1.1);
