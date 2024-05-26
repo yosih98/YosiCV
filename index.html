@@ -79,6 +79,16 @@
         header h1 {
             margin: 0;
             font-size: 2em;
+            animation: bounceIn 2s infinite alternate;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-20px);
+            }
         }
 
         header p {
@@ -189,6 +199,11 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .details-grid div:hover {
+            transform: translateY(-10px);
         }
 
         .details-grid h3 {
