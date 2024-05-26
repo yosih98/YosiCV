@@ -253,40 +253,6 @@
             font-size: 1.2em;
         }
 
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1em;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .contact-form button {
-            padding: 10px;
-            background-color: #1abc9c;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .contact-form button:hover {
-            background-color: #16a085;
-            transform: scale(1.05);
-        }
-
         .shapes {
             position: absolute;
             top: 0;
@@ -585,6 +551,33 @@
             background-color: #e67e22;
             transform: scale(1.1);
         }
+
+        /* تنسيق إضافي لنموذج الاتصال */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        form input, form textarea, form button {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: var(--nav-bg);
+            color: var(--nav-text);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: var(--nav-hover-bg);
+        }
     </style>
 </head>
 <body data-theme="day">
@@ -690,7 +683,7 @@
                         <li>分析および意思決定能力</li>
                         <li>独立して、またはチームの一員として働く能力</li>
                         <li>レポートおよび科学研究の執筆</li>
-                        <li>新しいことを迅速かつ効率的に学ぶ強い意欲</li>
+                        <li>新しいことを迅速かつ効率的に学ぶ強い情熱</li>
                         <li>継続的な個人および専門的な発展へのコミットメント</li>
                     </ul>
                 </div>
@@ -743,13 +736,10 @@
             <p>WhatsApp: <a href="https://wa.me/60173573380" target="_blank">+60173573380</a></p>
             <p>Instagram: <a href="https://www.instagram.com/yosi.h_?igshid=czJxeWl0NmpsZDZj&utm_source=qr" target="_blank">@yosi.h_</a></p>
             <p>Line: <a href="https://line.me/ti/p/9_Rotdq0GH" target="_blank">Add me on Line</a></p>
-        </section>
-        <section id="contact-form" class="section">
-            <h2>お問い合わせ</h2>
-            <form class="contact-form">
+            <form action="send_email.php" method="post">
                 <input type="text" name="name" placeholder="Name" required>
                 <input type="email" name="email" placeholder="Email" required>
-                <textarea name="message" rows="5" placeholder="Message" required></textarea>
+                <textarea name="message" placeholder="Message" required></textarea>
                 <button type="submit">Send</button>
             </form>
         </section>
