@@ -1,7 +1,0 @@
-<Files "send_email.php">
-    Require all granted
-</Files>
-
-RewriteEngine On
-RewriteCond %{REQUEST_METHOD} ^POST$
-RewriteRule ^send_email.php$ send_email.php [L]
