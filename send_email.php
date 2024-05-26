@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (mail($to, $subject, $body, $headers)) {
             echo "Email sent successfully!";
         } else {
-            echo "Failed to send email.";
+            echo "Failed to send email. Please check your server configuration.";
         }
     } else {
         echo "Invalid email address.";
